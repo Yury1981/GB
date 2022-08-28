@@ -1,0 +1,11 @@
+// Напишите программу, которая принимает на вход число (N) и выдаёт таблицу квадратов чисел от 1 до N.
+
+void Quadrat(int N)
+{
+    for (int i = 1; i <= N; i++)
+    Console.WriteLine(i * i);
+}
+
+Console.Write("Input N: ");
+int N = Convert.ToInt32(Console.ReadLine());
+Quadrat(N);

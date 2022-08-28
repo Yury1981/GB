@@ -1,0 +1,15 @@
+// Напишите программу, которая по заданному номеру четверти, показывает диапазон возможных координат точек в этой четверти (x и y).
+
+void Diapazone(int x)
+{
+    string msg = "ERROR";
+    if(x == 1) msg = "x > 0 and y > 0";
+    if(x == 2) msg = "x < 0 and y > 0";
+    if(x == 3) msg = "x < 0 and y < 0";
+    if(x == 4) msg = "x > 0 and y < 0";
+    Console.WriteLine(msg);
+}
+
+Console.Write("Input quadrant: ");
+int x = Convert.ToInt32(Console.ReadLine());
+Diapazone(x);

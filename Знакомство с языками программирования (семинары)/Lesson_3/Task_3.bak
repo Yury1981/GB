@@ -1,0 +1,15 @@
+// Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 2D пространстве.
+
+void Distance(double xA, double yA, double xB, double yB)
+{
+    Console.WriteLine(Math.Sqrt(Math.Pow(Math.Abs(xB-xA),2) + Math.Pow(Math.Abs(yB-yA),2)));
+}
+Console.Write("Input XA coordinate: ");
+double xA = Convert.ToDouble(Console.ReadLine());
+Console.Write("Input XB coordinate: ");
+double yA = Convert.ToDouble(Console.ReadLine());
+Console.Write("Input YA coordinate: ");
+double xB = Convert.ToDouble(Console.ReadLine());
+Console.Write("Input YB coordinate: ");
+double yB = Convert.ToDouble(Console.ReadLine());
+Distance(xA,yA,xB,yB);
