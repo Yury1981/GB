@@ -6,9 +6,9 @@ void Distance(double xA, double yA, double xB, double yB)
 }
 Console.Write("Input XA coordinate: ");
 double xA = Convert.ToDouble(Console.ReadLine());
-Console.Write("Input XB coordinate: ");
-double yA = Convert.ToDouble(Console.ReadLine());
 Console.Write("Input YA coordinate: ");
+double yA = Convert.ToDouble(Console.ReadLine());
+Console.Write("Input XB coordinate: ");
 double xB = Convert.ToDouble(Console.ReadLine());
 Console.Write("Input YB coordinate: ");
 double yB = Convert.ToDouble(Console.ReadLine());
