@@ -1,0 +1,15 @@
+// Напишите программу, которая принимает на вход число N и выдаёт произведение чисел от 1 до N.
+
+int FindDev(int a)
+{
+    int dev = 1;
+    for (int current = 2; current <= a; current++)
+    {
+        dev *= current;
+    }
+    return dev;
+}
+
+Console.Write("Input A: ");
+int A = Convert.ToInt32(Console.ReadLine());
+Console.Write($"Dev = : {FindDev(A)}");

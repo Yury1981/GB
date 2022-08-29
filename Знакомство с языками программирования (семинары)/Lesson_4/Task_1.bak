@@ -1,0 +1,17 @@
+// Напишите программу, которая принимает на вход число и выдаёт количество цифр в числе.
+
+int DigitCount(int num)
+{
+    int count = 1;
+    int temp = num;
+    while (temp / 10 > 0)
+    {
+        temp = temp / 10;
+        count++;
+    }
+    return (count);
+}
+
+Console.WriteLine("Input number: ");
+int num = Convert.ToInt32(Console.ReadLine());
+Console.Write($"Digits in number = : {DigitCount(num)}");

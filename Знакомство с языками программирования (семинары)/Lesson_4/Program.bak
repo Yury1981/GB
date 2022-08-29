@@ -1,0 +1,17 @@
+﻿// Напишите программу, которая принимает на вход число (А) и выдаёт сумму чисел от 1 до А.
+
+int FindSum(int a)
+{
+    int sum = 0;
+    for (int current = 1; current <= a; current++)
+    {
+        sum += current;
+    }
+    return sum;
+}
+
+Console.Write("Input A: ");
+int A = Convert.ToInt32(Console.ReadLine());
+Console.Write($"Sum = : {FindSum(A)}");
+
+
