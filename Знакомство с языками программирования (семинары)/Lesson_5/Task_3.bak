@@ -1,0 +1,25 @@
+// Задайте одномерный массив из 15 случайных чисел. Найдите количество элементов массива, значения которых лежат в отрезке [10,99].
+
+int[] CreateRandomArray()
+{
+    int[] newArray = new int[15];
+    for (int i = 0; i < 15; i++)
+    {
+        newArray[i] = new Random().Next(0, 151);
+    }
+    return newArray;
+}
+
+int FindElement(int[] array)
+{
+    int count = 0;
+    for(int i = 0; i < array.Length; i++)
+        if (array[i] > 9 & array[i] < 100) count += 1; 
+    return count;
+}
+
+int[] newArray = CreateRandomArray();
+Console.WriteLine("[{0}]", string.Join(", ", newArray));
+
+int x = FindElement(newArray);
+Console.WriteLine(x);
