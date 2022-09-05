@@ -1,0 +1,31 @@
+// Не используя рекурсию, выведите первые N чисел Фибоначчи. Первые два числа Фибоначчи: a и b.
+
+int[] Fibonachi(int a, int b, int N)
+{
+    int[] Arr = new int[N];
+    Arr[0] = a;
+    Arr[1] = b;
+    for (int i = 2; i < N; i++)
+    {
+        Arr[i] = Arr[i - 2] + Arr[i - 1];
+    }
+    return Arr;
+}
+
+void ShowArray(int[] array)
+{
+    Console.Write("[");
+    for(int i = 0; i < array.Length -1; i++)
+        Console.Write(array[i] + ", ");
+    Console.WriteLine($"{array[array.Length - 1]}]");
+}
+
+Console.Write("Input a: ");
+int a = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input b: ");
+int b = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input N: ");
+int N = Convert.ToInt32(Console.ReadLine());
+
+int[] array = Fibonachi(a, b, N);
+ShowArray(array);

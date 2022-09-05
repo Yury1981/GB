@@ -1,0 +1,17 @@
+// Напишите программу, которая будет преобразовывать десятичное число в двоичное.
+
+string ConvertTo2(int number)
+{
+    string Result = string.Empty;
+    while (number != 0)
+    {
+            Result = number % 2 + Result;
+            number /= 2;
+    }
+    return Result;
+}
+
+Console.WriteLine("Input number: ");
+int number = Convert.ToInt32(Console.ReadLine());
+string res = ConvertTo2(number);
+Console.WriteLine(res);
