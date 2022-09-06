@@ -10,6 +10,7 @@ int[] EnterNumbers()
     int[] numbers = input.Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
     return numbers;
 }
+
 int CountPositiveNumbers(int[] array)
 {
     int count = 0;
@@ -19,8 +20,10 @@ int CountPositiveNumbers(int[] array)
     }
     return count;
 }
+
 Console.Write("Enter the numbers cherez probel: ");
 int[] array = EnterNumbers();
+
 Console.WriteLine($"You entered {CountPositiveNumbers(array)} numbers > 0");
 */
 
@@ -34,6 +37,7 @@ double Input(string m)
     double n = Convert.ToInt32(Console.ReadLine());
     return n;
 }
+
 string RaschetCrossPoint(double b1, double k1, double b2, double k2)
 {
     string res = string.Empty;
@@ -47,8 +51,10 @@ string RaschetCrossPoint(double b1, double k1, double b2, double k2)
     }
     return res;
 }
+
 double b1 = Input("b1");
 double k1 = Input("k1");
 double b2 = Input("b2");
 double k2 = Input("k2");
+
 Console.WriteLine(RaschetCrossPoint(b1, k1, b2,k2));
