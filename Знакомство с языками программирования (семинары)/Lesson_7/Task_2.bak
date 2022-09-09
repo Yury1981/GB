@@ -1,6 +1,6 @@
 // Задайте двумерный массив размера m на n, каждый элемент в массиве находится по формуле: Aij = i+j. Выведите полученный массив на экран.
 
-int[,] CreateRandom2dArray()
+int[,] CreateArray()
 {
     Console.Write("Input numbers of rows: ");
     int rows = Convert.ToInt32(Console.ReadLine());
@@ -19,15 +19,16 @@ void Show2dArrray(int[,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
     {
-        Console.Write("[");
+        Console.Write("|");
         for( int j = 0; j < array.GetLength(1); j++)
         {
-            Console.Write(array[i,j] + " ");
+            if (array[i,j] < 10) Console.Write(" 0" + array[i,j] + " |");
+            else Console.Write(" " + array[i,j] + " |");
         }
-        Console.WriteLine("]");
+        Console.WriteLine();
     }
     Console.WriteLine();
 }
 
-int[,] myArray = CreateRandom2dArray();
+int[,] myArray = CreateArray();
 Show2dArrray(myArray);
