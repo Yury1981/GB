@@ -1,0 +1,31 @@
+/*
+const Double пи = 3.1415;
+int k_BackingField;
+void set_MyProperty(int value)
+{
+    k_BackingField = value;
+}
+int get_MyPropery()
+{
+    return k_BackingField;
+}
+int MyProperty { get; set; }
+*/
+
+Math.Round(Math.PI, 4);
+int backingfield;
+
+void SetMyProperty(int value)
+{
+    backingfield = value;
+}
+
+int GetMyPropery()
+{
+    return backingfield;
+}
+int LoadMyProperty()
+{
+    get;
+    set;
+}
