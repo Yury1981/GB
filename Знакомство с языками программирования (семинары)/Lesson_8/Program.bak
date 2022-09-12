@@ -1,0 +1,52 @@
+﻿// Задайте двумерный массив. Напишите программу, которая поменяет местами первую и последнюю строку массива.
+
+
+int[,] CreateRandom2dArray()
+{
+     Console.Write("Input numbers of rows: ");
+    int rows = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Input numbers of columns: ");
+    int columns = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Input min possible value: ");
+    int minValue = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Input max possible value: ");
+    int maxValue = Convert.ToInt32(Console.ReadLine());
+
+    int[,] newArray = new int[rows, columns];
+
+    for (int i = 0; i < rows; i++)
+        for( int j = 0; j < columns; j++)
+            newArray[i,j] = new Random().Next(minValue, maxValue +1);
+    return newArray;
+}
+
+void Show2dArrray(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        Console.Write("|");
+        for( int j = 0; j < array.GetLength(1); j++)
+        {
+            if (array[i,j] < 10) Console.Write(" 0" + array[i,j] + " |");
+            else Console.Write(" " + array[i,j] + " |");
+        }
+        Console.WriteLine();
+    }
+    Console.WriteLine();
+}
+
+int[,] ChangeRows(int[,] array, int row1, int row2)
+{
+    if (row1 >= 0 && row1 < array.GetLength(0) && row2 >= 0 && row2 < array.GetLength(0));
+    for (int j = 0; j < array.GetLength(1); j++)
+    {
+        int temp = array[row1,j];
+        array[row1,j] = array[row2,j];
+        array[row2,j] = temp;
+    }
+    return array;
+}
+
+int[,] myArray = CreateRandom2dArray();
+Show2dArrray(myArray);
+Show2dArrray(ChangeRows(myArray, 2, 5));
