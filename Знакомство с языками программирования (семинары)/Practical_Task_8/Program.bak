@@ -100,7 +100,7 @@ void Show2dArrray(int[,] array)
             if (array[i, j] < 10) Console.Write(" 0" + array[i, j] + " |");
             else Console.Write(" " + array[i, j] + " |");
         }
-        Console.WriteLine($" - {i}-я строка");
+        Console.WriteLine($" - {i + 1}-я строка");
     }
     Console.WriteLine();
 }
@@ -128,7 +128,7 @@ int MinSumRow(int[,] array)
 int[,] myArray = CreateRandom2dArray();
 Show2dArrray(myArray);
 
-Console.WriteLine($"is in {MinSumRow(myArray)} row");
+Console.WriteLine($"is in {MinSumRow(myArray) + 1} row");
 */
 
 /*
@@ -150,6 +150,7 @@ int[,] CreateRandom2dArray(int rows, int columns, int minValue, int maxValue)
             newArray[i, j] = new Random().Next(minValue, maxValue + 1);
     return newArray;
 }
+
 void Show2dArrray(int[,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
@@ -200,7 +201,7 @@ Show2dArrray(MatrixMultiplication(matrix1, matrix2));
 27(0,0,1) 90(0,1,1)
 26(1,0,1) 55(1,1,1)
 */
-
+/*
 int[,,] CreateRandom3dArray()
 {
     Console.Write("Input numbers of rows: ");
@@ -214,26 +215,69 @@ int[,,] CreateRandom3dArray()
     Console.Write("Input max possible value: ");
     int maxValue = Convert.ToInt32(Console.ReadLine());
 
-    int[,,] newArray = new int[x, y, z];
-
-    for (int i = 0; i < x; i++)
-        for (int j = 0; j < y; j++)
-            for (int k = 0; k < z; k++)
-            newArray[i, j, k] = new Random().Next(minValue, maxValue + 1);
+    int[,,] newArray = new int[z, x, y];
+    int number;
+    int count = 0;
+    for (int k = 0; k < z; k++)
+        for (int i = 0; i < x; i++)
+            for (int j = 0; j < y; j++)
+            {
+                number = new Random().Next(minValue, maxValue + 1);
+                for (int o = 0; o < z; o++)
+                    for (int m = 0; m < x; m++)
+                        for (int n = 0; n < y; n++)
+                            if (number != newArray[o, m, n]) count++;
+                        if (count == newArray.Length)
+                        {
+                            newArray[k, i, j] = number;
+                            count = 0;
+                        }
+                        else
+                        {
+                            count = 0;
+                            j = (j - 1);
+                            continue;
+                        }
+            }
     return newArray;
 }
+
 void Show3dArrray(int[,,] array)
 {
-    for (int i = 0; i < array.GetLength(0); i++)
-        for (int j = 0; j < array.GetLength(1); j++)
-            for (int k = 0; k < array.GetLength(2); k++)
-                Console.Write(array[i, j, k]);
-    Console.WriteLine();
+    for (int k = 0; k < array.GetLength(2); k++)
+        for (int i = 0; i < array.GetLength(0); i++)
+        {
+            Console.Write("|");
+            for (int j = 0; j < array.GetLength(1); j++)
+            {
+                Console.Write("{0,4}", array[i, j, k]);
+                Console.Write($"({i},{j},{k}) |");
+            }
+            Console.WriteLine();
+        }
+}
+
+void Show3dArrray2(int[,,] array)
+{
+    for (int k = 0; k < array.GetLength(2); k++)
+    {
+        Console.WriteLine($"This is {k} layer");
+        for (int i = 0; i < array.GetLength(0); i++)
+        {
+            Console.Write("|");
+            for (int j = 0; j < array.GetLength(1); j++)
+                Console.Write("{0,4} |", array[i, j, k]);
+            Console.WriteLine();
+        }
+         Console.WriteLine();
+    }
 }
 
 int[,,] myArray = CreateRandom3dArray();
 Show3dArrray(myArray);
-
+Console.WriteLine();
+Show3dArrray2(myArray);
+*/
 
 /*Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
 Например, на выходе получается вот такой массив:
@@ -242,3 +286,61 @@ Show3dArrray(myArray);
 11 16 15 06
 10 09 08 07
 */
+
+int[,] Create2dArray()
+{
+    Console.Write("Input numbers of rows: ");
+    int m = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Input numbers of columns: ");
+    int n = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine();
+        
+    int[,] newArray = new int[m, n];
+    int number = 1;
+    int countrows = 0;
+    int countcolumns = 0;
+    for (int i = 0; i < m; i++)
+        for (int j = 0; j < n; j++)
+        {
+            newArray[i, j] = number;
+            number++;
+        }
+        countrows++;
+        for (int k = countrows; k < m; k++)
+        {
+            newArray[k, n - countcolumns] = number;
+            number++;
+        }
+        countcolumns++;
+        for (int l = n -  1 - countcolumns; l >= countcolumns - 1; l--)
+        {
+            newArray[m - countrows, l] = number;
+            number++;
+        }
+        countrows++;
+        for  (int x = m - 1 - countrows; x >= countrows - 1; x--)
+        {
+            newArray[n - 1 - countcolumns, x] = number;
+            number++;
+        }
+        countcolumns++;
+    return newArray;
+}
+
+void Show2dArrray(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        Console.Write("|");
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            if (array[i, j] < 10) Console.Write(" 0" + array[i, j] + " |");
+            else Console.Write(" " + array[i, j] + " |");
+        }
+        Console.WriteLine($" - {i}-я строка");
+    }
+    Console.WriteLine();
+}
+
+int[,] myArray = Create2dArray();
+Show2dArrray(myArray);

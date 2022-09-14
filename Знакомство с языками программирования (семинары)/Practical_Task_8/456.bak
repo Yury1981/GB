@@ -1,0 +1,46 @@
+int[,] CreateSpiral()
+{
+    Console.Write("Input numbers of rows: ");
+    int m = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Input numbers of columns: ");
+    int n = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine();
+
+    int[,] newArray = new int[m, n];
+    int istart = 0, iend = 0, jstart = 0, jend = 0, number = 1, i = 0, j = 0;
+    while (number <= newArray.Length)
+    {
+        newArray[i, j] = number;
+        if (i == istart && j < m - jend - 1) j++;
+        else if (j == m - jend - 1 && i < n - iend - 1) i++;
+        else if (i == n - iend - 1 && j > jstart) j--;
+        else i--;
+        if ((i == istart + 1) && (j == jstart) && (jstart != m - jend - 1))
+        {
+            istart++;
+            iend++;
+            jstart++;
+            jend++;
+        }
+        number++;
+    }
+    return newArray;
+}
+
+void Show2dArrray(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        Console.Write("|");
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            if (array[i, j] < 10) Console.Write(" 0" + array[i, j] + " |");
+            else Console.Write(" " + array[i, j] + " |");
+        }
+        Console.WriteLine($" - {i}-я строка");
+    }
+    Console.WriteLine();
+}
+
+int[,] myArray = CreateSpiral();
+Show2dArrray(myArray);

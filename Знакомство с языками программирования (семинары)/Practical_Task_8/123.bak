@@ -1,0 +1,66 @@
+Console.Write("Input numbers of rows: ");
+int x = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input numbers of columns: ");
+int y = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input numbers of diagonal: ");
+int z = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input min possible value: ");
+int minValue = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input max possible value: ");
+int maxValue = Convert.ToInt32(Console.ReadLine());
+
+/*
+int[,] newArray = new int[x, y];
+int number;
+int count = 0;
+for (int i = 0; i < x; i++)
+{
+    for (int j = 0; j < y; j++)
+    {
+        number = new Random().Next(minValue, maxValue + 1);
+        for (int m = 0; m < x; m++)
+            for (int n = 0; n < y; n++)
+                if (number != newArray[m, n]) count++;
+                if (count == newArray.Length)
+                {
+                    newArray[i, j] = number;
+                    count = 0;
+                }
+                else
+                {
+                    count = 0;
+                    j = (j - 1);
+                    continue;
+                }
+                Console.Write(newArray[i, j] + "  ");
+    }
+    Console.WriteLine();
+    Console.WriteLine();
+}
+*/
+
+int[,,] newArray = new int[z, x, y];
+int number;
+int count = 0;
+for (int k = 0; k < z; k++)
+    for (int i = 0; i < x; i++)
+        for (int j = 0; j < y; j++)
+        {
+            number = new Random().Next(minValue, maxValue + 1);
+            for (int o = 0; o < z; o++)
+                for (int m = 0; m < x; m++)
+                    for (int n = 0; n < y; n++)
+                        if (number != newArray[o, m, n]) count++;
+                    if (count == newArray.Length)
+                    {
+                        newArray[k, i, j] = number;
+                        count = 0;
+                    }
+                    else
+                    {
+                        count = 0;
+                        j = (j - 1);
+                        continue;
+                    }
+        }
+                    
