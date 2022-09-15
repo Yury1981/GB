@@ -1,0 +1,10 @@
+// Напишите программу, которая будет принимать на вход число и возвращать сумму его цифр.
+
+int SumOfDigitals(int n)
+{
+    if (n > 0) return SumOfDigitals(n / 10) + n % 10;
+    else return 0;
+}
+
+// 5734
+Console.WriteLine(SumOfDigitals(5734));
