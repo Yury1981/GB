@@ -287,43 +287,34 @@ Show3dArrray2(myArray);
 10 09 08 07
 */
 
-int[,] Create2dArray()
+int[,] CreateSpiral()
 {
     Console.Write("Input numbers of rows: ");
     int m = Convert.ToInt32(Console.ReadLine());
     Console.Write("Input numbers of columns: ");
     int n = Convert.ToInt32(Console.ReadLine());
     Console.WriteLine();
-        
+
     int[,] newArray = new int[m, n];
-    int number = 1;
-    int countrows = 0;
-    int countcolumns = 0;
-    for (int i = 0; i < m; i++)
-        for (int j = 0; j < n; j++)
+    int istart = 0, iend = m - 1, jstart = 0, jend = n - 1, number = 1, i = 0, j = 0;
+    while (number <= newArray.Length)
+    {
+        newArray[i, j] = number;
+        if (i == istart && j < jend) j++;
+        else if (j == jend && i < iend) i++;
+        else if (i == iend && j > jstart) j--;
+        else if (j == jstart && i > istart) i--;
+        if (i == istart && j == jstart)
         {
-            newArray[i, j] = number;
-            number++;
+            istart++;
+            jstart++;
+            i++;
+            j++;
+            iend--;
+            jend--;
         }
-        countrows++;
-        for (int k = countrows; k < m; k++)
-        {
-            newArray[k, n - countcolumns] = number;
-            number++;
-        }
-        countcolumns++;
-        for (int l = n -  1 - countcolumns; l >= countcolumns - 1; l--)
-        {
-            newArray[m - countrows, l] = number;
-            number++;
-        }
-        countrows++;
-        for  (int x = m - 1 - countrows; x >= countrows - 1; x--)
-        {
-            newArray[n - 1 - countcolumns, x] = number;
-            number++;
-        }
-        countcolumns++;
+        number++;
+    }
     return newArray;
 }
 
@@ -342,5 +333,5 @@ void Show2dArrray(int[,] array)
     Console.WriteLine();
 }
 
-int[,] myArray = Create2dArray();
+int[,] myArray = CreateSpiral();
 Show2dArrray(myArray);
