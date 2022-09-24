@@ -1,20 +1,18 @@
 ﻿using System;
-using System.Linq;
-using System.Text;
-using System.Net.Http;
-using CatMaster;
 
-namespace Cat
+namespace Cats
 {
     class Program
     {
-        static public void Main(string[] args)
+        static public void Main()
         {
-            Console.Write("Введите имя: ");
-            string name = Console.ReadLine();
+            Cat cat1 = new Cat();
+            cat1.SetValues("Barsik", "Siam", 3.3f, 3);
+            cat1.PrintValues();
 
-            Console.WriteLine(args[0]);
-            Console.ReadKey();
+            Cat cat2 = new Cat();
+            cat2.SetValues("Vasya", "Mein-kun", 5.2f, 2);
+            cat2.PrintValues();
         }
     }
 }
